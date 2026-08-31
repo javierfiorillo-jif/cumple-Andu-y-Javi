@@ -77,6 +77,16 @@
 </head>
 <body class="relative flex flex-col items-center justify-center p-4 sm:p-8">
 
+    <!-- Elemento de audio oculto -->
+    <audio id="bg-music" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Botón flotante para activar/desactivar la música -->
+    <button id="music-toggle" onclick="toggleMusic()" class="fixed top-4 right-4 z-50 bg-amber-400 text-teal-950 p-3 rounded-full shadow-lg border border-amber-300/50 flex items-center justify-center transition-transform hover:scale-110">
+        <i id="music-icon" data-lucide="music" class="w-6 h-6"></i>
+    </button>
+
     <div id="particles" class="fixed inset-0 pointer-events-none overflow-hidden"></div>
 
     <div class="relative z-10 max-w-md w-full bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 text-center animate-glow">
@@ -145,6 +155,33 @@
 
     <script>
         lucide.createIcons();
+        
+        // Reproductor de música
+        const music = document.getElementById('bg-music');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                isPlaying = false;
+                document.getElementById('music-toggle').classList.remove('animate-bounce');
+            } else {
+                music.play();
+                isPlaying = true;
+                document.getElementById('music-toggle').classList.add('animate-bounce');
+            }
+        }
+
+        // Intenta reproducir al primer toque en cualquier parte de la pantalla
+        document.body.addEventListener('click', function startAudioOnFirstTouch() {
+            if (!isPlaying) {
+                music.play().then(() => {
+                    isPlaying = true;
+                    document.getElementById('music-toggle').classList.add('animate-bounce');
+                }).catch(err => console.log("Esperando interacción para audio"));
+            }
+        }, { once: true });
+
         const colors = ['#fbbf24', '#f59e0b', '#34d399', '#2dd4bf'];
         const container = document.getElementById('particles');
         
