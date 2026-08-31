@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Cumple de Andu y Javi!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #020617 0%, #0f766e 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .font-script { font-family: 'Dancing Script', cursive; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.5); }
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-glow { animation: pulse-glow 4s ease-in-out infinite; }
+        .stagger-1 { animation: fade-in-up 0.8s ease-out 0.2s forwards; opacity: 0; }
+        .stagger-2 { animation: fade-in-up 0.8s ease-out 0.4s forwards; opacity: 0; }
+        .stagger-3 { animation: fade-in-up 0.8s ease-out 0.6s forwards; opacity: 0; }
+        .stagger-4 { animation: fade-in-up 0.8s ease-out 0.8s forwards; opacity: 0; }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+            animation: float-up 10s linear infinite;
+        }
+
+        @keyframes float-up {
+            from { transform: translateY(100vh) rotate(0deg); }
+            to { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .photo-container {
+            position: relative;
+            z-index: 10;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 4px solid rgba(251, 191, 36, 0.3);
+            aspect-ratio: 3/4;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-container:hover img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="relative flex flex-col items-center justify-center p-4 sm:p-8">
+
+    <div id="particles" class="fixed inset-0 pointer-events-none overflow-hidden"></div>
+
+    <div class="relative z-10 max-w-md w-full bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 text-center animate-glow">
+        
+        <div class="stagger-1 mb-6">
+            <h1 class="font-script text-5xl text-amber-300 mb-2">Andu y Javi</h1>
+            <p class="text-sm text-teal-200 tracking-widest uppercase">¡Sale festejo de cumple!</p>
+        </div>
+
+        <div class="stagger-2 mb-8 animate-float">
+            <div class="photo-container shadow-2xl">
+                <img src="https://i.postimg.cc/9XBPjH9c/IMG-20260816-162817.jpg" alt="Andu y Javi">
+            </div>
+        </div>
+
+        <div class="stagger-3 space-y-4 mb-8">
+            <div class="bg-teal-950/50 p-4 rounded-xl border border-teal-500/30">
+                <p class="text-amber-100 text-[15px] italic leading-relaxed">
+                    "Cuando una leonina 🦁 y un virginiano ♍ se juntan para festejar, pasan estas cosas... 
+                    <strong class="text-amber-300">¡Se manda la invitación con 1 mes de anticipación!</strong>"
+                </p>
+            </div>
+            
+            <p class="text-[16px] text-gray-200 leading-relaxed">
+                Tenemos muchas ganas de hacer eso que tanto nos gusta: juntarnos a compartir un buen rato con amigues.
+                <br><br>
+                Y que quede claro... <strong class="text-amber-300 text-lg">queremos que vengan a mover el totó hasta lo que de</strong> 💃🕺
+            </p>
+            
+            <p class="text-[16px] text-gray-200 leading-relaxed font-semibold mt-4">
+                La cita es acá:
+            </p>
+        </div>
+
+        <div class="stagger-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-2xl p-5 mb-8 border border-amber-500/20">
+            <div class="flex items-center justify-center gap-3 mb-3 text-amber-300">
+                <i data-lucide="calendar" class="w-5 h-5"></i>
+                <span class="font-semibold text-lg">Viernes 25 de Septiembre</span>
+            </div>
+            <div class="flex items-center justify-center gap-3 mb-3 text-amber-300">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+                <span class="font-semibold text-lg">A partir de las 23:45 hrs</span>
+            </div>
+            <div class="flex items-center justify-center gap-3 text-amber-300">
+                <i data-lucide="map-pin" class="w-5 h-5 flex-shrink-0"></i>
+                <div class="text-left">
+                    <span class="font-semibold block text-lg">Casa Jache</span>
+                    <span class="text-sm text-amber-200/80">Dr. Juan Felipe Aranguren 213</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stagger-4 mb-6">
+            <p class="text-sm text-teal-200 mb-4 px-2">
+                Para organizarnos mejor (vieron cómo es el tema del cupo en los lugares), les pedimos que nos avisen si vienen llenando este mini formulario.
+            </p>
+            <p class="text-amber-300 font-script text-3xl mb-6">¡Gracias, les amamos!</p>
+            
+            <!-- ACÁ PONÉ EL ENLACE DE TU GOOGLE FORMS -->
+            <a href="LINK_DE_TU_GOOGLE_FORMS_AQUI" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-amber-400 to-orange-500 text-teal-950 font-bold py-4 rounded-xl shadow-lg hover:shadow-orange-500/30 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 no-underline cursor-pointer">
+                <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                ¡Confirmo que voy!
+            </a>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const colors = ['#fbbf24', '#f59e0b', '#34d399', '#2dd4bf'];
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 10 + 5;
+            const left = Math.random() * 100;
+            const duration = Math.random() * 10 + 10;
+            const delay = Math.random() * 10;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${left}vw`;
+            particle.style.background = color;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `-${delay}s`;
+            particle.style.opacity = (Math.random() * 0.5 + 0.1).toString();
+            container.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
